@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Food Categories</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Video */
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -2;
+      object-fit: cover;
+    }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(143, 16, 16, 0.8);
+      padding: 40px 0;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      animation: slideDown 1s ease forwards;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1.5px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 2s ease;
+    }
+
+    details {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    details:hover {
+      transform: scale(1.02);
+    }
+
+    summary {
+      padding: 16px 24px;
+      font-size: 1.3em;
+      background-color: #1d5d52;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    summary:hover {
+      background-color: #14786e;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .food-item {
+      padding: 14px 30px;
+      border-top: 1px solid #e0e0e0;
+      background-color: #fff;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .food-item a {
+      text-decoration: none;
+      color: #2d2d2d;
+      font-size: 1rem;
+      display: inline-block;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .food-item a:hover {
+      color: #d01717;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #fff;
+      padding: 20px 0;
+      margin-top: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    footer h2 {
+      margin: 0;
+      font-weight: normal;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideDown {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      main {
+        margin: 30px 10px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="c:\Users\rit\Downloads\istockphoto-2151127858-640_adpp_is.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  
+  <div class="overlay"></div>
+
+  <header>
+    <h1>Explore Delicious Recipes</h1>
+  </header>
+
+  <main>
+    <details>
+      <summary>🍛 Indian Cuisine</summary>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=a03U45jFxOI" target="_blank">Butter Chicken</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=95BCU1n268w" target="_blank">Biryani</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=ZaUNzwr_KF0" target="_blank">Paneer Tikka</a></div>
+    </details>
+    <details>
+      <summary>🥡 Chinese Cuisine</summary>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=ZTgVFe4_H-s" target="_blank">Fried Rice</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=J4PEtXG1yzc" target="_blank">Manchurian</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=wNB05Zc4TqA" target="_blank">Spring Rolls</a></div>
+    </details>
+    <details>
+      <summary>🍕 Italian Cuisine</summary>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=MDX8fylSisU" target="_blank">Pizza</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=bcnPfcJnYr0" target="_blank">Pasta</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=VkQajdYciW0" target="_blank">Lasagna</a></div>
+    </details>
+    <details>
+      <summary>🌮 Mexican Cuisine</summary>
+      <div class="food-item"><a href="https://www.youtube.com/playlist?list=PLnRN4Rh4gYsUL5JOX81I7QrDbCkPJWSpx" target="_blank">Tacos</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/playlist?list=PLOEO4KagRhvrWUya0iuOYqQnVT8-9aGzB" target="_blank">Burritos</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=BbbYeVAAmB8" target="_blank">Salsa</a></div>
+    </details>
+    
+    <details>
+      <summary>🥐 French Cuisine</summary>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=-ZQE_5ms_aI" target="_blank">Chicken Marengo</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=NJoUPvaSAHU&pp=0gcJCdgAo7VqN5tD" target="_blank">Chicken chasseur</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=RlFBTrqea2g" target="_blank">Croissant</a></div>
+    </details>
+    
+    <details>
+      <summary>🍲Thai Cuisine</summary>
+      <div class="food-item"><a href="https://hot-thai-kitchen.com/tom-yum-goong/" target="_blank">Tom Yum Goong</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=rgm5wv4TJFg" target="_blank">Kaeng Lueang</a></div>
+      <div class="food-item"><a href="https://www.youtube.com/watch?v=gwV9SJtewCY&pp=0gcJCfwAo7VqN5tD" target="_blank">Khao Soi</a></div>
+    </details>
+  </main>
+
+  <footer>
+    <h2>Made with ❤️ for Food Lovers</h2>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blue Moon Drinks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(244, 133, 164);
+            padding: 10px;
+        }
+
+        h1, h2 {
+            color: rgb(110, 2, 36);
+        }
+
+        img {
+            width: 150px;
+            height: 100px;
+        }
+
+        .menu-item {
+            margin-bottom: 15px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .contact {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Blue Moon Drinks</h1>
+
+    <h2>Menu</h2>
+    <div class="menu">
+        <div class="menu-item">
+            <p>Orange Juice</p>
+            <img src="orange.jfif" alt="Orange Juice">
+        </div>
+        <div class="menu-item">
+            <p>Apple Juice</p>
+            <img src="apple.jfif" alt="Apple Juice">
+        </div>
+        <div class="menu-item">
+            <p>Blast Berry Juice</p>
+            <img src="berry.jfif" alt="Blast Berry Juice">
+        </div>
+    </div>
+
+    <h2>Place Your Order</h2>
+    <form>
+        <label>Name:</label>
+        <input type="text" name="name">
+
+        <label>Address:</label>
+        <textarea name="address" rows="3"></textarea>
+
+        <label>Phone Number:</label>
+        <input type="text" name="phone">
+
+        <label>Juice Choice:</label>
+        <input type="text" name="juice">
+
+        <br><br>
+        <input type="submit" value="Submit Order">
+    </form>
+
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: bluemoon@gmail.com</p>
+        <p>Phone: 123-456-7890</p>
+    </div>
+
+</body>
+</html>

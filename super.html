@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SuperMart</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.7);
+    }
+
+    header {
+      background: rgba(76, 175, 80, 0.95);
+      width: 100%;
+      padding: 25px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #e8f5e9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #222;
+      width: 100%;
+      padding: 12px 0;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    nav a {
+      color: white;
+      padding: 10px 25px;
+      text-decoration: none;
+      margin: 5px 15px;
+      border-radius: 8px;
+      background: #555;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #66bb6a;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .product {
+      background: rgba(255, 255, 255, 0.95);
+      margin: 15px;
+      padding: 20px;
+      border-radius: 15px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .product img {
+      max-width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product h3 {
+      color: #2e7d32;
+      font-size: 1.3em;
+      margin-bottom: 8px;
+    }
+
+    .product p {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .product button {
+      padding: 10px 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .product button:hover {
+      background: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Background -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="c:\Users\rit\Downloads\istockphoto-1127946629-640_adpp_is.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <header>
+    <h1>Welcome to SuperMart 🛒</h1>
+    <p>Your favorite online grocery store</p>
+  </header>
+
+  <nav>
+    <a href="cart.html">🛍️ View Cart</a>
+    <a href="odr.html">🧾 Place Order</a>
+    <a href="review.html">💬 Customer Reviews</a>
+  </nav>
+
+  <div class="container">
+    <div class="product">
+      <img src="app.jfif" alt="Apples">
+      <h3>Fresh Apples</h3>
+      <p>₹120/kg</p>
+      <button onclick="addToCart('Fresh Apples')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="rice.jfif" alt="Rice">
+      <h3>Premium Rice</h3>
+      <p>₹60/kg</p>
+      <button onclick="addToCart('Rice')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="milk.jfif" alt="Milk">
+      <h3>Organic Milk</h3>
+      <p>₹50/L</p>
+      <button onclick="addToCart('Milk')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="org.jfif" alt="Bananas">
+      <h3>Bananas</h3>
+      <p>₹40/dozen</p>
+      <button onclick="addToCart('Bananas')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="egg.jpg" alt="Eggs">
+      <h3>Farm Eggs</h3>
+      <p>₹70/dozen</p>
+      <button onclick="addToCart('Eggs')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="bread.jpg" alt="Bread">
+      <h3>Whole Wheat Bread</h3>
+      <p>₹35/loaf</p>
+      <button onclick="addToCart('Bread')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="oil.avif" alt="Cooking Oil">
+      <h3>Cooking Oil</h3>
+      <p>₹130/L</p>
+      <button onclick="addToCart('Cooking Oil')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="sugar.jpg" alt="Sugar">
+      <h3>White Sugar</h3>
+      <p>₹45/kg</p>
+      <button onclick="addToCart('Sugar')">Add to Cart</button>
+    </div>
+  </div>
+
+  <script>
+    function addToCart(item) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(item + ' added to cart!');
+    }
+  </script>
+</body>
+</html>
+

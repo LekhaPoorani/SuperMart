@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f1f2b5, #135058);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0;
+      background-color: #1d3c45;
+      color: white;
+      font-size: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eef6f7;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .item img {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    button {
+      padding: 6px 12px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #388E3C;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🛒 Your Shopping Cart
+  </header>
+
+  <div class="cart-container">
+    <h1>Cart</h1>
+    <div id="cart"></div>
+    <div class="total" id="total"></div>
+  
+  <div style="text-align: right; margin-top: 20px;">
+    <a href="odr.html">
+      <button style="
+        background: #1d3c45;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+      ">Place Order</button>
+    </a>
+  </div>
+  
+  <script>
+    const products = {
+      "Milk": { price: 50, img: "milk.jfif" },
+      "Rice": { price: 60, img: "rice.jfif" },
+      "Apples": { price: 120, img: "app.jfif" },
+      "Bananas": { price: 40, img: "org.jfif" },
+      "Eggs": { price: 70, img: "egg.jpg" },
+      "Bread": { price: 35, img: "bread.jpg" },
+      "Cooking Oil": { price: 130, img: "oil.avif" },
+      "Sugar": { price: 45, img: "sugar.jpg" }
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let cartMap = {};
+    cart.forEach(item => {
+      cartMap[item] = (cartMap[item] || 0) + 1;
+    });
+
+    function renderCart() {
+      const container = document.getElementById("cart");
+      const totalBox = document.getElementById("total");
+      container.innerHTML = "";
+      let total = 0;
+
+      for (let item in cartMap) {
+        const qty = cartMap[item];
+        const product = products[item];
+
+        if (!product) continue;
+
+        const price = product.price;
+        const img = product.img;
+        total += qty * price;
+
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <img src="${img}" alt="${item}">
+          <div class="info">
+            <strong>${item}</strong><br>₹${price} x ${qty}
+          </div>
+          <div class="qty">
+            <button onclick="updateQty('${item}', -1)">−</button>
+            <span>${qty}</span>
+            <button onclick="updateQty('${item}', 1)">+</button>
+          </div>
+        `;
+        container.appendChild(div);
+      }
+
+      totalBox.innerText = `Total: ₹${total}`;
+    }
+
+    function updateQty(item, delta) {
+      cartMap[item] += delta;
+      if (cartMap[item] <= 0) delete cartMap[item];
+      let newCart = [];
+      for (let k in cartMap) {
+        for (let i = 0; i < cartMap[k]; i++) newCart.push(k);
+      }
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>

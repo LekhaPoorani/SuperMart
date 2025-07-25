@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Reviews</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fbd3e9, #bb377d);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0;
+      background-color: #bb377d;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .review-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 15px;
+      background-color: #bb377d;
+      color: white;
+      border: none;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #9b2e68;
+    }
+
+    .reviews {
+      margin-top: 40px;
+    }
+
+    .review {
+      background-color: #f8f8f8;
+      border-left: 4px solid #bb377d;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .review h4 {
+      margin-bottom: 5px;
+    }
+
+    .review p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    📝 Customer Reviews
+  </header>
+
+  <div class="review-container">
+    <form id="reviewForm">
+      <label for="username">Your Name</label>
+      <input type="text" id="username" required>
+
+      <label for="comment">Your Review</label>
+      <textarea id="comment" rows="4" required></textarea>
+
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="reviews" id="reviews">
+      <!-- User reviews will be added here -->
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('reviewForm');
+    const reviewsDiv = document.getElementById('reviews');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('username').value.trim();
+      const comment = document.getElementById('comment').value.trim();
+
+      if (name && comment) {
+        const review = document.createElement('div');
+        review.classList.add('review');
+        review.innerHTML = `<h4>${name}</h4><p>${comment}</p>`;
+        reviewsDiv.prepend(review);
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
